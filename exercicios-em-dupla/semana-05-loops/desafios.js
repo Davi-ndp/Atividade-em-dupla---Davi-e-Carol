@@ -32,6 +32,12 @@
    RESULTADO ESPERADO: 3 / 2 / 1 / ⚽ GOOOOL! */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let n = 3;
+while (n > 0) {
+  console.log(n);
+  n--;
+}
+console.log("⚽ GOOOOL!");
 
 /* ═══ EXERCÍCIO 2 — 💰 Juntando grana para o rolê ═══
    CONTEXTO: o show custa R$ 120. Você guarda R$ 25 por semana.
@@ -48,6 +54,15 @@
    Semana 1: R$ 25 ... Semana 5: R$ 125 / 🎫 Deu! Bora pro show! */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let guardado = 0;
+let semana = 0;
+while (guardado < 120) {
+  semana++;
+  guardado += 25;
+  console.log("Semana " + semana + ": R$ " + guardado);
+}
+console.log("🎫 Deu! Bora pro show!");
+
 
 /* ═══ EXERCÍCIO 3 — 🔐 A senha do wifi (do-while) ═══
    CONTEXTO: você tenta a senha do wifi da lanchonete ATÉ acertar —
@@ -60,6 +75,12 @@
    RESULTADO ESPERADO: Tentativa 1... / 2... / 3... / 🔓 Conectou! */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let tentativa = 1;
+do {
+  console.log("Tentativa " + tentativa + "...");
+  tentativa++;
+} while (tentativa <= 3);
+console.log("🔓 Conectou!");
 
 /* ═══ EXERCÍCIO 4 — 📣 A torcida no busão ═══
    CONTEXTO: a torcida voltando do jogo grita 5 vezes no 675P.
@@ -71,6 +92,10 @@
    RESULTADO ESPERADO: Grito 1 ... Grito 5 (cinco linhas) */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+for (let i = 1; i <=5; i++) {
+   console.log("BRASIL!" + i);
+}
+
 
 /* ═══ EXERCÍCIO 5 — ✖️ Tabuada do 7 ═══
    CONTEXTO: o clássico — mas agora quem escreve é o código.
@@ -80,6 +105,9 @@
    RESULTADO ESPERADO: 10 linhas, de 7 x 1 = 7 até 7 x 10 = 70 */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+for (let i = 1; i <= 10; i++) {
+  console.log("7 x " + i + " = " + (7 * i));
+}
 
 /* ═══ EXERCÍCIO 6 — 💸 Quanto foi a semana? ═══
    CONTEXTO: seus gastos da semana estão na lista abaixo
