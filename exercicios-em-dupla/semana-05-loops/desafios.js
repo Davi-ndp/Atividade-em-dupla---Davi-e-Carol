@@ -114,10 +114,16 @@ for (let i = 1; i <= 10; i++) {
    (busão, lanche, açaí, recarga, rolê).
    TAREFA: some tudo com for (o padrão ACUMULADOR: total começa
    em 0) e mostre:  Total da semana: R$ <valor>  */
-let gastos = [8.8, 15, 12, 20, 30];
 /* DICA: for (let i = 0; i < gastos.length; i++) { total = total + gastos[i]; }
    RESULTADO ESPERADO: Total da semana: R$ 85.8 */
 // ✍️ SOLUÇÃO DA DUPLA:
+let gastos = [8.8, 15, 12, 20, 30];
+let total = 0;
+for (let i = 0; i < gastos.length; i++) {
+  total += gastos[i];
+}
+console.log("Total da semana: R$ " + total.toFixed(1));
+
 
 
 /* ═══ EXERCÍCIO 7 — 🍕 A lista da pizza (for...of) ═══
@@ -133,6 +139,9 @@ let convidados = ["Duda", "Rebeca", "João", "Vitor"];
    RESULTADO ESPERADO: 4 linhas de confirmação */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+for (let convidado of convidados) {
+  console.log("🍕 " + convidado + " confirmou!");
+}
 
 /* ═══ EXERCÍCIO 8 — 🎂 Quantos podem ir na balada? ═══
    CONTEXTO: as idades da galera: */
@@ -148,6 +157,13 @@ let idades = [17, 19, 22, 16, 18];
    quando o if deixa.
    RESULTADO ESPERADO: Liberados: 3 de 5 */
 // ✍️ SOLUÇÃO DA DUPLA:
+let liberados = 0;
+for (let idade of idades) {
+  if (idade >= 18) {
+    liberados++;
+  }
+}
+console.log("Liberados: " + liberados + " de " + idades.length);
 
 
 /* ═══ EXERCÍCIO 9 — 🎆 Réveillon na Paulista ═══
@@ -156,6 +172,10 @@ let idades = [17, 19, 22, 16, 18];
    DICA: for (let i = 10; i >= 1; i--)
    RESULTADO ESPERADO: 10, 9, ..., 1, 🎆 FELIZ ANO NOVO! */
 // ✍️ SOLUÇÃO DA DUPLA:
+for (let i = 10; i >= 1; i--) {
+  console.log(i);
+}
+console.log("🎆 FELIZ ANO NOVO!");
 
 
 /* ═══ EXERCÍCIO 10 — 🎓 A média da turma ═══
@@ -168,7 +188,11 @@ let notas = [7, 9, 6, 10, 8];
    já nasceu no exercício 6, e um let só nasce uma vez!
    RESULTADO ESPERADO: Média da turma: 8 */
 // ✍️ SOLUÇÃO DA DUPLA:
-
+let soma = 0;
+for (let nota of notas) {
+  soma += nota;
+}
+console.log("Média da turma: " + (soma / notas.length));
 
 /* ═══ EXERCÍCIO 11 — 🍕 Cardápio combinado (loop aninhado) ═══
    CONTEXTO: a pizzaria monta o cardápio combinando cada sabor
@@ -185,6 +209,11 @@ let bordas = ["catupiry", "cheddar"];
    DICA: o de fora anda nos sabores; o de dentro, nas bordas.
    RESULTADO ESPERADO: 6 combinações (3 x 2) */
 // ✍️ SOLUÇÃO DA DUPLA:
+for (let sabor of sabores) {
+  for (let borda of bordas) {
+    console.log(sabor + " com borda de " + borda);
+  }
+}
 
 
 /* ═══ EXERCÍCIO 12 — 🚌 Achou, parou (break) ═══
@@ -197,6 +226,12 @@ let linhas = ["637P", "695X", "675P", "746A", "709M"];
    RESULTADO ESPERADO: vendo: 637P / vendo: 695X / 🚌 Achei o 675P!
    (746A e 709M NÃO aparecem) */
 // ✍️ SOLUÇÃO DA DUPLA:
+for (let linha of linhas) {
+  console.log("vendo: " + linha);
+  if (linha === "675P") {
+    console.log("🚌 Achei o 675P!");
+    break;
+  }
 
 
 /* ═══ EXERCÍCIO 13 — 🧾 Pulando os zerados (continue) ═══
@@ -208,6 +243,13 @@ let extrato = [12, 0, 25, 0, 8];
    DICA: continue = "pula ESTA volta e segue para a próxima".
    RESULTADO ESPERADO: gasto: R$ 12 / gasto: R$ 25 / gasto: R$ 8 */
 // ✍️ SOLUÇÃO DA DUPLA:
+for (let dia of extrato) {
+  if (dia === 0) {
+    continue;
+  }
+  console.log("gasto: R$ " + dia);
+}
+
 
 
 /* ═══ EXERCÍCIO 14 — 🐛 CONSERTE o loop infinito ═══
@@ -222,6 +264,12 @@ let extrato = [12, 0, 25, 0, 8];
    condição do false.
    RESULTADO ESPERADO: Faltam 5... até Faltam 1... e o loop PARA. */
 // ✍️ SOLUÇÃO DA DUPLA (a versão consertada):
+
+let fila = 5;
+while (fila > 0) {
+  console.log("Faltam " + fila + " pessoas na fila do RG");
+  fila--; // Decrementa a fila para evitar loop infinito
+}
 
 
 /* ═══ EXERCÍCIO 15 — 🏆 DESAFIO DA DUPLA: fechamento do caixa ═══
@@ -250,4 +298,4 @@ let vendas = [35, 80, 12, 95, 47, 60];
    [ ] Os DOIS sabem apontar, em cada loop, quem impede o infinito?
    [ ] Commit nos DOIS GitHubs:
         git commit -m "Semana 05 resolvida — dupla X & Y"
-   ============================================================ */
+   ============================================================ 
