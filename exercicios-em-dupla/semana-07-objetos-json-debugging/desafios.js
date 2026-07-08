@@ -29,6 +29,15 @@
    RESULTADO ESPERADO (exemplo): Duda / 19 / Santo Amaro */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let dev = {
+  nome: "Davi",
+  idade: 25,
+  bairro: "Santo Amaro"
+};
+
+console.log(dev.nome + " / " + dev.idade + " / " + dev.bairro);
+
+
 
 /* ═══ EXERCÍCIO 2 — 🎉 Conseguiu o estágio! ═══
    CONTEXTO: a vaga saiu! Seu perfil ganha novos dados.
@@ -39,6 +48,9 @@
    RESULTADO ESPERADO: TechSA / 1200 */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+dev.empresa = "TechSA";
+dev.bolsa = 1200;
+console.log(dev.empresa + " / " + dev.bolsa);
 
 /* ═══ EXERCÍCIO 3 — 🎤 Elevator pitch (objeto + função) ═══
    CONTEXTO: apresentar-se em 1 frase na entrevista.
@@ -50,6 +62,11 @@
    Sou Duda, de Santo Amaro, dev em formação! */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+function apresentar(p) {
+   return ("Sou" + dev.nome + " de " + dev.bairro + ", dev em formação!")
+}  
+console.log(apresentar(dev));
+ 
 
 /* ═══ EXERCÍCIO 4 — 🍕 O carrinho da pizza (array de objetos) ═══
    CONTEXTO: o Brasil ganhou 🇧🇷 e o pedido no app ficou assim: */
@@ -64,6 +81,11 @@ let carrinho = [
    RESULTADO ESPERADO: Total do pedido: R$ 80 */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let total = 0;
+for (let i = 0; i < carrinho.length; i++) {
+   total += carrinho[i].preco;
+}
+console.log(`Total do pedido: R$ ${total}`);
 
 /* ═══ EXERCÍCIO 5 — 📦 Objeto vira texto (stringify) ═══
    CONTEXTO: para VIAJAR pela internet (ou ser salvo), o objeto
@@ -73,6 +95,17 @@ let carrinho = [
    RESULTADO ESPERADO (exemplo):
    {"nome":"Duda","idade":19,"bairro":"Santo Amaro","empresa":"TechSA","bolsa":1200} */
 // ✍️ SOLUÇÃO DA DUPLA:
+
+let dev3 = {
+   nome: "Duda",
+   idade: 19,
+   bairro: "Santo Amaro",
+   empresa: "TechSA",
+   bolsa: 1200
+};
+let devTexto = JSON.stringify(dev3);
+console.log(devTexto);
+ 
 
 
 /* ═══ EXERCÍCIO 6 — 📬 Texto vira objeto (parse) ═══
@@ -84,6 +117,9 @@ let respostaAPI = '{"vaga":"Dev Júnior","salario":2200,"local":"Santo Amaro"}';
    RESULTADO ESPERADO: 💼 Dev Júnior em Santo Amaro — R$ 2200 */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let respostaObj = JSON.parse(respostaAPI);
+console.log(`💼 ${respostaObj.vaga} em ${respostaObj.local} — R$ ${respostaObj.salario}`);
+
 
 /* ═══ EXERCÍCIO 7 — 💾 Sobrevivendo ao F5 (setItem/getItem) ═══
    CONTEXTO: até hoje tudo que vocês fizeram morria no F5. Acabou.
@@ -93,6 +129,8 @@ let respostaAPI = '{"vaga":"Dev Júnior","salario":2200,"local":"Santo Amaro"}';
    RESULTADO ESPERADO: seu nome — mesmo depois do F5! 🤯 */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+localStorage.setItem("nome", "Duda");
+console.log(localStorage.getItem("nome"));
 
 /* ═══ EXERCÍCIO 8 — 💾 O objeto que não morre ═══
    CONTEXTO: agora o perfil INTEIRO vai sobreviver.
@@ -108,6 +146,9 @@ let respostaAPI = '{"vaga":"Dev Júnior","salario":2200,"local":"Santo Amaro"}';
    RESULTADO ESPERADO: TechSA */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+localStorage.setItem("dev", "TechSA");
+console.log(localStorage.getItem("dev"));
+ 
 
 /* ═══ EXERCÍCIO 9 — 🕳️ null: a chave que não existe ═══
    CONTEXTO: clássico de bug silencioso (e de entrevista!).
@@ -119,6 +160,7 @@ let respostaAPI = '{"vaga":"Dev Júnior","salario":2200,"local":"Santo Amaro"}';
    (Apareceu null nas DUAS linhas? É porque vocês ainda não fizeram
    o exercício 8 — ele é quem guarda a chave "dev". Voltem lá!)
    RESULTADO ESPERADO: o texto JSON do dev  /  null */
+
 console.log(localStorage.getItem("dev"));
 console.log(localStorage.getItem("chaveFantasma"));
 
@@ -137,6 +179,10 @@ console.log(localStorage.getItem("chaveFantasma"));
    RESULTADO ESPERADO: Visita nº 1, e crescendo a cada F5 */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+let visitas = Number(localStorage.getItem("visitas"));
+visitas++;
+localStorage.setItem("visitas", visitas);
+console.log("Visita nº " + visitas);
 
 /* ═══ EXERCÍCIO 11 — 🐛 CONSERTE: o erro que grita ═══
    CONTEXTO: um estagiário deixou esse código quebrado. Descomente,
@@ -169,6 +215,13 @@ let jsonCortado = '{"vaga":"Dev Júnior","sal';
    RESULTADO ESPERADO: ⚠️ Resposta corrompida, tente de novo: ... */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+try {
+  let respostaObj = JSON.parse(jsonCortado);
+  console.log(`💼 ${respostaObj.vaga} em ${respostaObj.local} — R$ ${respostaObj.salario}`);
+} catch (erro) {
+  console.log("⚠️ Resposta corrompida, tente de novo: " + erro.message);
+}
+
 
 /* ═══ EXERCÍCIO 14 — 🛡️ O segurança na porta (validação) ═══
    CONTEXTO: o formulário de recarga do bilhete único 🚌 aceita
@@ -187,6 +240,24 @@ let jsonCortado = '{"vaga":"Dev Júnior","sal';
    RESULTADO ESPERADO:
    ⚠️ Campo vazio / ⚠️ Isso não é número / ⚠️ Valor tem que ser positivo / ✅ Recarga de R$ 20 */
 // ✍️ SOLUÇÃO DA DUPLA:
+
+function validarRecarga(texto) {
+  if (texto === "") {
+    return "⚠️ Campo vazio";
+  }
+  if (isNaN(Number(texto))) {
+    return "⚠️ Isso não é número";
+  }
+  if (Number(texto) <= 0) {
+    return "⚠️ Valor tem que ser positivo";
+  }
+  return "✅ Recarga de R$ " + Number(texto);
+
+console.log(validarRecarga(""));     
+console.log(validarRecarga("abc")); 
+console.log(validarRecarga("-5"));    
+console.log(validarRecarga("20"));   
+}
 
 
 /* ═══ EXERCÍCIO 15 — 🏆 DESAFIO DA DUPLA: o pedido blindado ═══
@@ -209,6 +280,21 @@ let jsonCortado = '{"vaga":"Dev Júnior","sal';
    RESULTADO ESPERADO: Total: R$ 72 / ⚠️ Pedido inválido / ⚠️ Pedido vazio */
 // ✍️ SOLUÇÃO DA DUPLA:
 
+function lerPedido(texto) {
+  try {
+    let lista = JSON.parse(texto);
+    if (lista.length === 0) {
+      return "⚠️ Pedido vazio";
+    }
+    let total = 0;
+    for (let item of lista) {
+      total += item.preco;
+    }
+    return "Total: R$ " + total;
+  } catch (erro) {
+    return "⚠️ Pedido inválido";
+  }
+}
 
 
 /* ============================================================

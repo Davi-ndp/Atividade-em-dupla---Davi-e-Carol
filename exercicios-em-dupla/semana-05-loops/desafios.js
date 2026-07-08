@@ -232,7 +232,7 @@ for (let linha of linhas) {
     console.log("🚌 Achei o 675P!");
     break;
   }
-
+}
 
 /* ═══ EXERCÍCIO 13 — 🧾 Pulando os zerados (continue) ═══
    CONTEXTO: extrato do mês — dias sem gasto aparecem como 0 e
@@ -291,6 +291,18 @@ let vendas = [35, 80, 12, 95, 47, 60];
 // ✍️ SOLUÇÃO DA DUPLA:
 
 
+let totalVendas = 0;
+let maiorVenda = 0;
+
+for (let venda of vendas) {
+  totalVendas += venda; // Soma o total vendido
+  if (venda > maiorVenda) {
+    maiorVenda = venda; // Atualiza a maior venda se necessário
+  }
+}
+
+console.log("Total: R$ " + totalVendas);
+console.log("Maior venda: R$ " + maiorVenda);
 
 /* ============================================================
    ✅ CHECKLIST FINAL DA DUPLA
@@ -298,4 +310,4 @@ let vendas = [35, 80, 12, 95, 47, 60];
    [ ] Os DOIS sabem apontar, em cada loop, quem impede o infinito?
    [ ] Commit nos DOIS GitHubs:
         git commit -m "Semana 05 resolvida — dupla X & Y"
-   ============================================================ 
+   ============================================================ */
